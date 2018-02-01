@@ -11,6 +11,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         LinkedList ll = new LinkedList();
+        ll.addFront(2);
+        ll.addFront(5);
+        ll.addFront(7);
+        ll.addEnd(9);
         ll.display();
     }
 }

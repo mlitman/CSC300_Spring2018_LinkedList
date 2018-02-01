@@ -15,5 +15,38 @@ public class Node
         this.nextNode = null;
     }
 
+    public void addEnd(int payload)
+    {
+        if(this.nextNode == null)
+        {
+            this.nextNode = new Node(payload);
+        }
+        else
+        {
+            this.nextNode.addEnd(payload);
+        }
+    }
+    public void display()
+    {
+        System.out.print(this.payload + " -> ");
+        if(this.nextNode != null)
+        {
+            this.nextNode.display();
+        }
+    }
 
+    public int getPayload()
+    {
+        return this.payload;
+    }
+
+    public Node getNextNode()
+    {
+        return this.nextNode;
+    }
+
+    public void setNextNode(Node n)
+    {
+        this.nextNode = n;
+    }
 }
