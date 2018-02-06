@@ -1,5 +1,10 @@
 package com.example.awesomefat.csc300_spring2018_linkedlist;
 
+import android.content.Context;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
 /**
  * Created by awesomefat on 1/30/18.
  */
@@ -7,10 +12,14 @@ package com.example.awesomefat.csc300_spring2018_linkedlist;
 public class LinkedList
 {
     private Node head;
+    private ViewGroup linkedListContainer;
+    private Context theContext;
 
-    public LinkedList()
+    public LinkedList(ViewGroup linkedListContainer, Context theContext)
     {
         this.head = null;
+        this.linkedListContainer = linkedListContainer;
+        this.theContext = theContext;
     }
 
     public void addFront(int payload)
@@ -28,6 +37,12 @@ public class LinkedList
             n.setNextNode(this.head);
             this.head = n;
         }
+
+        //update the interface
+        TextView tv = new TextView(this.theContext);
+        tv.setText("" + payload);
+        tv.setGravity(Gravity.CENTER);
+        this.linkedListContainer.addView(tv,0);
     }
 
     public void addEnd(int payload)
@@ -50,6 +65,12 @@ public class LinkedList
             //currnode is sitting at the last node
             currNode.setNextNode(n);
             */
+
+            //update the interface
+            TextView tv = new TextView(this.theContext);
+            tv.setText("" + payload);
+            tv.setGravity(Gravity.CENTER);
+            this.linkedListContainer.addView(tv);
         }
     }
 
