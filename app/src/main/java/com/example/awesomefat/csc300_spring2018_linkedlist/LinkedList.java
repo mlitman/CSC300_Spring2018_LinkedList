@@ -22,6 +22,19 @@ public class LinkedList
         this.theContext = theContext;
     }
 
+    public int removeFront()
+    {
+        //removes the front of the linked list, and updates the interface
+        //and ultimately returns the int payload of the node that was removed.
+        this.linkedListContainer.removeViewAt(0); // removes the view at 0
+    }
+
+    public int removeEnd()
+    {
+        //removes the end of the linked list, and updates the interface
+        //and ultimately returns the int payload of the node that was removed.
+    }
+
     public void addFront(int payload)
     {
         Node n = new Node(payload);
