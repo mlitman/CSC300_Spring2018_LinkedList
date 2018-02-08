@@ -61,4 +61,29 @@ public class MainActivity extends AppCompatActivity
         this.ll.addEnd(Integer.parseInt(temp));
         //this.ll.display();
     }
+
+    public void removeFrontButtonClicked(View v)
+    {
+        try
+        {
+            int value = this.ll.removeFront();
+            //do stuff with that element
+            this.ll.display();
+        }
+        catch(Exception e)
+        {
+            System.err.println("Empty List");
+        }
+    }
+
+    public void removeEndButtonClicked(View v)
+    {
+        try
+        {
+            int value = this.ll.removeEnd();
+            this.ll.display();
+        }
+        catch(Exception e){}
+
+    }
 }
