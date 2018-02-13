@@ -15,12 +15,54 @@ public class LinkedList
     private Node head;
     private ViewGroup linkedListContainer;
     private Context theContext;
+    private int count;
 
     public LinkedList(ViewGroup linkedListContainer, Context theContext)
     {
         this.head = null;
+        this.count = 0;
         this.linkedListContainer = linkedListContainer;
         this.theContext = theContext;
+    }
+
+    public int length()
+    {
+        return this.count;
+    }
+
+    public int removeAtIndex(int index) throws Exception
+    {
+        if(this.head == null || index < 0 || index >= this.count)
+        {
+            throw new Exception("Illegal Index!!!!!!");
+        }
+        else
+        {
+            if(index == 0)
+            {
+                return this.removeFront();
+            }
+            else if(index == this.count-1)
+            {
+                return this.removeEnd();
+            }
+            else
+            {
+                //remove from the middle
+                Node node2Remove = this.head;
+                Node prevNode = null;
+                for(int i = 0; i < index; i++)
+                {
+                    prevNode = node2Remove;
+                    node2Remove = node2Remove.getNextNode();
+                }
+                prevNode.setNextNode(node2Remove.getNextNode());
+                node2Remove.setNextNode(null);
+                this.count--;
+                this.linkedListContainer.removeViewAt(index);
+                return node2Remove.getPayload();
+            }
+        }
     }
 
     public int removeFront() throws Exception
@@ -32,6 +74,7 @@ public class LinkedList
             Node node2Remove = this.head;
             this.head = this.head.getNextNode();
             node2Remove.setNextNode(null);
+            this.count--;
             this.linkedListContainer.removeViewAt(0); // removes the view at 0
             return node2Remove.getPayload();
         }
@@ -73,6 +116,7 @@ public class LinkedList
 
             }
             this.linkedListContainer.removeViewAt(this.linkedListContainer.getChildCount()-1);
+            this.count--;
             return node2Remove.getPayload();
         }
         else
@@ -104,6 +148,7 @@ public class LinkedList
         tv.setText("" + payload);
         tv.setGravity(Gravity.CENTER);
         this.linkedListContainer.addView(tv,0);
+        this.count++;
     }
 
     public void addEnd(int payload)
@@ -132,6 +177,7 @@ public class LinkedList
             tv.setText("" + payload);
             tv.setGravity(Gravity.CENTER);
             this.linkedListContainer.addView(tv);
+            this.count++;
         }
     }
 

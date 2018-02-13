@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
     private EditText newNumberET;
+    private EditText indexET;
     //private Button addFrontButton;
     //private Button addEndButton;
     private ViewGroup linkedListContainer;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         this.newNumberET = (EditText)this.findViewById(R.id.newNumberET);
+        this.indexET = (EditText)this.findViewById(R.id.indexET);
+
         //this.addFrontButton = (Button)this.findViewById(R.id.addFrontButton);
         //this.addEndButton = (Button)this.findViewById(R.id.addEndButton);
         this.linkedListContainer = (ViewGroup)this.findViewById(R.id.linkedListContainer);
@@ -45,6 +49,26 @@ public class MainActivity extends AppCompatActivity
         }
     }
     */
+
+
+
+    public void addAtIndexButtonClicked(View v)
+    {
+        System.out.println(this.indexET.getText().toString());
+    }
+
+    public void removeAtIndexButtonClicked(View v)
+    {
+        int index = Integer.parseInt(this.indexET.getText().toString());
+        try
+        {
+            this.ll.removeAtIndex(index);
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void addFrontButtonClicked(View v)
     {

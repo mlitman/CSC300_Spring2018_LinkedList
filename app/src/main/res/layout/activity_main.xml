@@ -63,9 +63,47 @@
                 android:onClick="removeEndButtonClicked"
                 android:text="Remove End" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="addAtIndexButtonClicked"
+                android:text="Add At Index" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="removeAtIndexButtonClicked"
+                android:text="Remove At Index" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/indexET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Index"
+                android:inputType="number"
+                android:textAlignment="center" />
+        </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <LinearLayout
@@ -77,5 +115,6 @@
             </LinearLayout>
 
         </ScrollView>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
