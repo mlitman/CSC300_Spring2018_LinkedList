@@ -54,7 +54,16 @@ public class MainActivity extends AppCompatActivity
 
     public void addAtIndexButtonClicked(View v)
     {
-        System.out.println(this.indexET.getText().toString());
+        int index = Integer.parseInt(this.indexET.getText().toString());
+        int payload = Integer.parseInt(this.newNumberET.getText().toString());
+        try
+        {
+            this.ll.addAtIndex(payload, index);
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void removeAtIndexButtonClicked(View v)

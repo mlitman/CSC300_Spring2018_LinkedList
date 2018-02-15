@@ -30,6 +30,44 @@ public class LinkedList
         return this.count;
     }
 
+    public void addAtIndex(int payload, int index) throws Exception
+    {
+        if(this.head == null && index == 0)
+        {
+            this.addFront(payload);
+        }
+        else if(this.head == null || index < 0 || index > this.count)
+        {
+            throw new Exception("Illegal Index!!!!!!");
+        }
+        else if(index == this.count)
+        {
+            this.addEnd(payload);
+        }
+        else
+        {
+            //we know we that the index is a legal index that is not the front or the end
+            Node n = new Node(payload);
+
+            Node currNode = this.head;
+            Node prevNode = null;
+            for(int i = 0; i < index; i++)
+            {
+                prevNode = currNode;
+                currNode = currNode.getNextNode();
+            }
+            n.setNextNode(currNode);
+            prevNode.setNextNode(n);
+
+            //update the interface
+            TextView tv = new TextView(this.theContext);
+            tv.setText("" + payload);
+            tv.setGravity(Gravity.CENTER);
+            this.linkedListContainer.addView(tv,index);
+            this.count++;
+        }
+    }
+
     public int removeAtIndex(int index) throws Exception
     {
         if(this.head == null || index < 0 || index >= this.count)
